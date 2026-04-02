@@ -1,1 +1,2 @@
-# 162023006_praktikum310_sem6
+# Nama : Dita Mutaaliy Soidah
+# NRP  : 162023006
