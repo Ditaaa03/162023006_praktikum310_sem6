@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+<div>
+    <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
@@ -106,113 +107,40 @@
 </section>
 
 <section id="menu" class="container py-5">
-    <h2 class="text-center mb-5">Daftar Menu</h2>
+    <div class="d-flex justify-content-between mb-3">
+        <h3 class="mb-4">Daftar Menu</h3>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tambahProdukModal">
+            Tambah Produk
+        </button>
+        <a href="{{ route('products') }}" class="text-decoration-none text-dark mb-3">
+            Lihat Semua Menu >>>
+        </a>
+    </div>
 
-    <div class="row g-4 justify-content-center">
+    <div class="row g-4 justify-content-center" id="container-barang">
+        @foreach ($products as $item)
+        <div class="col-md-4 mb-4"> <div class="card shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title mt-2">{{ $item->product_name }}</h5>
+                    
+                    <span class="badge bg-secondary mb-2">
+                        {{ $item->category->category_name ?? 'Tanpa Kategori' }}
+                    </span>
+                    
+                    <p class="card-text text-danger">
+                        Rp {{ number_format($item->product_price, 0, ',', '.') }}
+                    </p>
+                    
+                    <p class="card-text">Stok: {{ $item->product_stock }}</p>
 
-        <div class="col-6 col-md-4 col-lg-3">
-            <div class="card h-100 shadow-sm menu-card">
-                <img src="{{ asset('assets/Smoothies.jpg') }}" class="card-img-top" alt="Smoothies">
-                <div class="card-body text-center">
-                    <h5 class="card-title">Smoothies</h5>
-                    <p class="fw-bold text-dark">Rp 40.000</p>
-                    <p class="card-text stok-text">Stok: 10</p>
-                    <a href="#" class="btn btn-primary btn-detail w-50 me-2">Beli</a>
-                    <button class="btn btn-outline-light-danger btn-wishlist w-50">❤️ Wishlist</button>
+                    <div class="d-flex justify-content-between">
+                        <button class="btn btn-primary btn-detail w-50 me-2">Beli</button>
+                        <button class="btn btn-outline-danger btn-wishlist w-50">❤️ Wishlist</button>
+                    </div>
                 </div>
             </div>
         </div>
-
-        <div class="col-6 col-md-4 col-lg-3">
-            <div class="card h-100 shadow-sm menu-card">
-                <img src="{{ asset('assets/Yogurt.jpg') }}" class="card-img-top" alt="Yogurt">
-                <div class="card-body text-center">
-                    <h5 class="card-title">Yogurt</h5>
-                    <p class="fw-bold text-dark">Rp 45.000</p>
-                    <p class="card-text stok-text">Stok: 10</p>
-                    <a href="#" class="btn btn-primary btn-detail w-50 me-2">Beli</a>
-                    <button class="btn btn-outline-light-danger btn-wishlist w-50">❤️ Wishlist</button>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-6 col-md-4 col-lg-3">
-            <div class="card h-100 shadow-sm menu-card">
-                <img src="{{ asset('assets/Dalgona_Coffee.jpg') }}" class="card-img-top" alt="Dalgona Coffee">
-                <div class="card-body text-center">
-                    <h5 class="card-title">Dalgona Coffee</h5>
-                    <p class="fw-bold text-dark">Rp 35.000</p>
-                    <p class="card-text stok-text">Stok: 10</p>
-                    <a href="#" class="btn btn-primary btn-detail w-50 me-2">Beli</a>
-                    <button class="btn btn-outline-light-danger btn-wishlist w-50">❤️ Wishlist</button>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-6 col-md-4 col-lg-3">
-            <div class="card h-100 shadow-sm menu-card">
-                <img src="{{ asset('assets/Gelato_Pistacchio.jpg') }}" class="card-img-top" alt="Gelato Pistacchio">
-                <div class="card-body text-center">
-                    <h5 class="card-title">Gelato Pistacchio</h5>
-                    <p class="fw-bold text-dark">Rp 66.000</p>
-                    <p class="card-text stok-text">Stok: 10</p>
-                    <a href="#" class="btn btn-primary btn-detail w-50 me-2">Beli</a>
-                    <button class="btn btn-outline-light-danger btn-wishlist w-50">❤️ Wishlist</button>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-6 col-md-4 col-lg-3">
-            <div class="card h-100 shadow-sm menu-card">
-                <img src="{{ asset('assets/Croissant.jpg') }}" class="card-img-top" alt="Croissant">
-                <div class="card-body text-center">
-                    <h5 class="card-title">Croissant</h5>
-                    <p class="fw-bold text-dark">Rp 25.000</p>
-                    <p class="card-text stok-text">Stok: 10</p>
-                    <a href="#" class="btn btn-primary btn-detail w-50 me-2">Beli</a>
-                    <button class="btn btn-outline-light-danger btn-wishlist w-50">❤️ Wishlist</button>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-6 col-md-4 col-lg-3">
-            <div class="card h-100 shadow-sm menu-card">
-                <img src="{{ asset('assets/Donut.jpg') }}" class="card-img-top" alt="Donut">
-                <div class="card-body text-center">
-                    <h5 class="card-title">Donut</h5>
-                    <p class="fw-bold text-dark">Rp 43.000</p>
-                    <p class="card-text stok-text">Stok: 10</p>
-                    <a href="#" class="btn btn-primary btn-detail w-50 me-2">Beli</a>
-                    <button class="btn btn-outline-light-danger btn-wishlist w-50">❤️ Wishlist</button>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-6 col-md-4 col-lg-3">
-            <div class="card h-100 shadow-sm menu-card">
-                <img src="{{ asset('assets/Chocolate_Chip_Cookies.jpg') }}" class="card-img-top" alt="Cookies">
-                <div class="card-body text-center">
-                    <h5 class="card-title">Chocolate Chip Cookies</h5>
-                    <p class="fw-bold text-dark">Rp 33.000</p>
-                    <p class="card-text stok-text">Stok: 10</p>
-                    <a href="#" class="btn btn-primary btn-detail w-50 me-2">Beli</a>
-                    <button class="btn btn-outline-light-danger btn-wishlist w-50">❤️ Wishlist</button>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-6 col-md-4 col-lg-3">
-            <div class="card h-100 shadow-sm menu-card">
-                <img src="{{ asset('assets/Soes.jpg') }}" class="card-img-top" alt="Soes">
-                <div class="card-body text-center">
-                    <h5 class="card-title">Soes</h5>
-                    <p class="fw-bold text-dark">Rp 64.000</p>
-                    <p class="card-text stok-text">Stok: 10</p>
-                    <a href="#" class="btn btn-primary btn-detail w-50 me-2">Beli</a>
-                    <button class="btn btn-outline-light-danger btn-wishlist w-50">❤️ Wishlist</button>
-                </div>
-            </div>
-        </div>
+        @endforeach
     </div>
 </section>
 
@@ -238,30 +166,34 @@
 <section id="form" class="py-5">
     <div class="container">
         <h2 class="text-center mb-4">Input Menu</h2>
-        <form method="POST">
+        <form method="POST" action="{{ route('products') }}">
+            @csrf
             <div class="row g-3">
                 <div class="col-md-6">
                     <label class="form-label">Nama Menu</label>
-                    <input type="text" class="form-control" required>
+                    <input type="text" name="product_name" class="form-control" required>
                 </div>
 
                 <div class="col-md-6">
                     <label class="form-label">Kategori</label>
-                    <select class="form-select" required>
+                    <select name="category_id" class="form-select" required>
                         <option value="">Pilih Kategori</option>
-                        <option>Makanan</option>
-                        <option>Minuman</option>
+                        @foreach($categories as $category)
+                        <option value="{{ $category->category_id }}">
+                            {{ $category->category_name }}
+                        </option>
+                        @endforeach
                     </select>
                 </div>
 
                 <div class="col-md-6">
                     <label class="form-label">Harga</label>
-                    <input type="number" class="form-control" required>
+                    <input type="number" name="product_price" class="form-control" required>
                 </div>
 
                 <div class="col-md-6">
                     <label class="form-label">Stok</label>
-                    <input type="number" class="form-control" required>
+                    <input type="number" name="product_stock" class="form-control" required>
                 </div>
 
                 <form method="POST" action="{{ route('products.store') }}">
@@ -304,5 +236,53 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="{{ asset('js/script.js') }}"></script>
 
+<div class="modal fade" id="tambahProdukModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="tambahProdukModalLabel">Tambah Produk</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <form action="{{ route('products.store') }}" method="POST">
+                @csrf
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="product_name" class="form-label">Nama Produk</label>
+                        <input type="text" class="form-control" id="product_name" name="product_name" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="category_id" class="form-label">Kategori</label>
+                        <select class="form-control" id="category_id" name="category_id" required>
+                            <option value="">Pilih Kategori</option>
+                            @foreach ($categories as $cat)
+                                <option value="{{ $cat->category_id }}">{{ $cat->category_name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="product_price" class="form-label">Harga Produk</label>
+                        <input type="number" class="form-control" id="product_price" name="product_price" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="product_stock" class="form-label">Stok Produk</label>
+                        <input type="number" class="form-control" id="product_stock" name="product_stock" required>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Kembali</button>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="bi bi-check-circle me-1"></i>Simpan Produk
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 </body>
 </html>
+</div>
