@@ -1,0 +1,75 @@
+body{
+    height: 100vh;
+    margin: 0;
+    background: linear-gradient(240deg, #e89daf, #8391d4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Poppins', 'Segoe UI', sans-serif;
+}
+
+.login-container{
+    width:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.login-card{
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(15px);
+    padding: 40px;
+    width: 100%;
+    max-width: 380px;
+    border-radius: 25px;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+    border: 1px solid rgba(255,255,255,0.3);
+    transition: 0.3s;
+}
+
+.login-card:hover{
+    transform: translateY(-5px);
+}
+
+.login-card h2{
+    font-weight: 800;
+    text-align:center;
+    color:#8391d4;
+    margin-bottom: 5px;
+}
+
+.login-card p{
+    font-size: 0.9rem;
+}
+
+.form-control{
+    border-radius: 12px;
+    border: 1px solid #eee;
+    padding: 12px;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.form-control:focus{
+    border-color: #8391d4;
+    box-shadow: 0 0 10px rgba(208, 102, 127, 0.3);
+}
+
+.form-check-label{
+    font-size: 0.9rem;
+}
+
+.btn-login{
+    background: linear-gradient(400deg, #e89daf, #8391d4);
+    border: none;
+    padding: 12px;
+    font-weight: 600;
+    border-radius: 30px;
+    transition: 0.3s;
+}
+
+.btn-login:hover{
+    background:#eee7e9;
+    transform: scale(1.03);
+    box-shadow: 0 5px 15px rgba(208,102,127,0.4);
+}
