@@ -12,7 +12,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Daily Drizzle Cafe</title>
+    <title>Login - Viya Market</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/login.css') }}">
 </head>
@@ -20,7 +20,7 @@
 <body>
     <div class="login-container">
         <div class="login-card">
-            <h2>Daily Drizzle Cafe</h2>
+            <h2>Daily Viya Market</h2>
             <p class="text-center text-muted mb-4">Silakan login untuk melanjutkan</p>
             <form method="POST" action="{{ route('login.proses') }}">
                 @csrf

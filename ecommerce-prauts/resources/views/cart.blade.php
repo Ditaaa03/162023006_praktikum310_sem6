@@ -15,7 +15,7 @@
             <tr>
                 <th>Produk</th>
                 <th>Harga</th>
-                <th>Qty</th>
+                <th>Quantity</th>
                 <th>Subtotal</th>
                 <th>Aksi</th>
             </tr>
