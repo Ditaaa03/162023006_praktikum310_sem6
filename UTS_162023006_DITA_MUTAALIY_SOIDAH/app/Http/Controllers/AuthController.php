@@ -1,8 +1,10 @@
 <?php
+
 namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
-
 use Illuminate\Http\Request;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
@@ -15,19 +17,20 @@ class AuthController extends Controller
     
     public function login(Request $request)
     {
-        $valid_user = "admin@gmail.com";
-        $valid_pass = "123";
+        $email = "admin@gmail.com";
+        $password = "123";
 
-        if ($request->username == $valid_user && $request->password == $valid_pass){
-            session(['user' => $request->username]);
-            return redirect()->route('home');
+        if ($request->email == $email && $request->password == $password){
+            session(['user' => $request->email]);
+            return redirect()->route('products.index');
         } else {
-            return back()->with('error', 'Username atau Password salah!');
+            return back()->with('error', 'Email atau Password salah!');
         }
     }
+
     public function logout()
     {
-        session()->forget('user');
-        return redirect()->route('home');
+        session()->flush();
+        return redirect()->route('login');
     }
 }

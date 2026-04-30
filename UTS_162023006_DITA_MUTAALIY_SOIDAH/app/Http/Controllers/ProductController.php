@@ -13,7 +13,14 @@ class ProductController extends Controller
      */
     public function index()
     {
+        if (!session()->has('user')) {
+            return redirect()->route('login');
+        }
 
+        $products = Product::all();
+        $totalProduk = Product::count();
+
+        return view('dashboard', compact('products', 'totalProduk'));
     }
 
     /**
@@ -26,16 +33,20 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
+        if (!session()->has('user')) {
+            return redirect()->route('login');
+        }
+
         $validateData = $request->validate([
-            'nama_produk'  => 'required|string|max:255',
-            'kode_produk'  => 'required|string|max:255|unique:products',
+            'nama_produk' => 'required|string|max:255',
+            'kode_produk' => 'required|string|max:255|unique:products',
             'stok_produk' => 'required|integer',
             'harga' => 'required|numeric',
         ]);
 
         Product::create($validateData);
 
-        return redirect()->route('products')->with('success', 'Produk berhasil ditambahkan!');
+        return redirect()->route('products.index')->with('success', 'Produk berhasil ditambahkan!');
     }
     /**
      * Display the specified resource.
@@ -58,7 +69,22 @@ class ProductController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        if (!session()->has('user')) {
+            return redirect()->route('login');
+        }
+
+        $product = Product::findOrFail($id);
+
+        $validateData = $request->validate([
+            'nama_produk' => 'required|string|max:255',
+            'kode_produk' => 'required|string|max:255|unique:products,kode_produk,' . $id,
+            'stok_produk' => 'required|integer',
+            'harga' => 'required|numeric',
+        ]);
+
+        $product->update($validateData);
+
+        return redirect()->route('dashboard')->with('success', 'Produk berhasil diupdate!');
     }
 
     /**
@@ -66,6 +92,7 @@ class ProductController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        Product::findOrFail($id)->delete();
+        return redirect()->back();
     }
 }

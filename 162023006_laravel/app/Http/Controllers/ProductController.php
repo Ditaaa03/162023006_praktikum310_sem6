@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use illuminate\Support\Facades\Storage;
 use App\Models\Category;
 use App\Models\Product;
 
